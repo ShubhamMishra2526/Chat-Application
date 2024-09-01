@@ -2,7 +2,7 @@
 import useConversation from "@/app/hooks/useConversation";
 import useRoutes from "@/app/hooks/useRoutes";
 import React from "react";
-import MobileItem from "../MobileItem";
+import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
   const routes = useRoutes();
