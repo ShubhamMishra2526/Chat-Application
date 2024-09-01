@@ -19,7 +19,7 @@ export const authOptions: AuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-    //for basic login functionality using email and pasword if user does not want to login with google and github
+
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -30,13 +30,13 @@ export const authOptions: AuthOptions = {
         if (!credentials?.email || !credentials?.password) {
           throw new Error("Invalid Credentials");
         }
-        // after passing the email assigning it to user variable
+
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
         });
-        // checking if email we passed is present in the database or not and case of hasehdpassword occurs when the user created his/her account using google/github and trying to login using email and password section
+
         if (!user || !user?.hashedPassword) {
           throw new Error("Invalid Credentials");
         }
